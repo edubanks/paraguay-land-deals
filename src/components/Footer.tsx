@@ -2,17 +2,23 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+  
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <h3 className="text-xl font-bold text-white mb-2">Eduardo Banks</h3>
-            <p className="text-gray-400">Connecting investors with opportunity in Paraguay.</p>
-          </div>
-          
-          <div className="flex flex-col items-center md:items-end">
-            <div className="flex space-x-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">Eduardo Banks</h3>
+            <p className="text-gray-400 mb-4">Connecting investors with opportunity in Paraguay.</p>
+            <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"></path>
@@ -29,13 +35,31 @@ const Footer: React.FC = () => {
                 </svg>
               </a>
             </div>
-            <p className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Eduardo Banks. All rights reserved.
-            </p>
+          </div>
+          
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><button onClick={() => scrollToSection('why-paraguay')} className="text-gray-400 hover:text-white transition-colors">Why Paraguay</button></li>
+              <li><button onClick={() => scrollToSection('properties')} className="text-gray-400 hover:text-white transition-colors">Properties</button></li>
+              <li><button onClick={() => scrollToSection('testimonials')} className="text-gray-400 hover:text-white transition-colors">Testimonials</button></li>
+              <li><button onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-white transition-colors">About</button></li>
+              <li><button onClick={() => scrollToSection('lead-form')} className="text-gray-400 hover:text-white transition-colors">Contact</button></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">Contact</h3>
+            <p className="text-gray-400 mb-2">Asunción, Paraguay</p>
+            <p className="text-gray-400 mb-2">info@eduardobanks.com</p>
+            <p className="text-gray-400 mb-2">+595 981 123 456</p>
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-800 text-sm text-gray-500 text-center">
+        <div className="pt-8 border-t border-gray-800 text-sm text-gray-500 text-center">
+          <p className="mb-4">
+            &copy; {currentYear} Eduardo Banks. All rights reserved.
+          </p>
           <p>
             This website is for informational purposes only. Not an offer to sell securities. 
             Investments involve risk and are not guaranteed.
